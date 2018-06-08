@@ -37,6 +37,7 @@ def exist(lst, target):
         return False
     
 def TBCrawledUpdater(urlList):
+    '''Evaluate if url in urlList should be added to To Be Crawled list'''
     for url in urlList: 
         if not exist(crawled, url):
             TBCrawled.append(url)
