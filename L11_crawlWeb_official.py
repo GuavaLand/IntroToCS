@@ -4,8 +4,12 @@ Created on Fri Jun  8 13:55:13 2018
 
 @author: yyuan1
 """
-def get_pages(url):
-    #TODO
+import urllib
+
+def get_page(url):
+    f = urllib.request.urlopen(url)
+    htmlPage = f.read().decode('utf-8') #https://stackoverflow.com/questions/47056068/python-3-6-typeerror-a-bytes-like-object-is-required-not-str-when-trying-to
+    return htmlPage
 
 def get_next_target(page):
     start_link = page.find('<a href=')
@@ -32,13 +36,21 @@ def get_all_links(page):
             break
     return links
 
-def crawl_web(seed):
+def crawl_web(seed, max_depth):
     tocrawl = [seed]
     crawled = []
-    while tocrawl: #False if tocrawl = []
+    next_depth = []
+    depth = 0
+    while tocrawl and depth <= max_depth:
         page = tocrawl.pop()
         if page not in crawled:
-            links = get_all_links(get_pages(page))
-            union(tocrawl, links)
-            crawled.append(page)      
+            union(next_depth, get_all_links(get_page(page)))
+            crawled.append(page)
+        if not tocrawl:
+            tocrawl, next_depth = next_depth, []
+            depth = depth + 1
     return crawled
+
+seed = 'https://udacity.github.io/cs101x/index.html'
+crawled = crawl_web(seed, 0)
+print(crawled)
