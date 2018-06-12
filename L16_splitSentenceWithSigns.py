@@ -34,3 +34,22 @@ def splitSentencesInListUsingSingleSpliter(sentenceList, individule_split):
 
 out = split_string("This is a test-of the,string separation-code!",",- ")
 print(out)
+
+##########################brute-force implementation##########################
+def split_string(source, splitlist):
+    result = []
+    unit = ''
+    for letter in source:
+        if letter not in splitlist:
+            unit += letter
+        elif letter in splitlist and unit != '': #second condition to avoid more than 1 space situation ('  ')
+            result.append(unit)
+            unit = ''
+    if unit != '':
+        result.append(unit)
+    return result
+
+out= split_string("After  the flood   ...  all the colors came out.", " .")
+print(out)
+assert out == ['After', 'the', 'flood', 'all', 'the', 'colors', 'came', 'out']
+print('Test completed!')
