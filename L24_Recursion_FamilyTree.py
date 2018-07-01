@@ -21,4 +21,14 @@ def ancestors(genealogy, person):
             ancestor = ancestor + ancestors(genealogy, name)
     return ancestor
     
-print(ancestors(ada_family, 'Judith Blunt-Lytton'))
+print(ancestors(ada_family, 'Augusta Ada King'))
+#>>> ['Anne Isabella Milbanke', 'George Gordon Byron',
+#    'Catherine Gordon','Captain John Byron']
+
+print (ancestors(ada_family, 'Judith Blunt-Lytton'))
+#>>> ['Anne Isabella Blunt', 'Wilfrid Scawen Blunt', 'Augusta Ada King',
+#    'William King-Noel', 'Anne Isabella Milbanke', 'George Gordon Byron',
+#    'Catherine Gordon', 'Captain John Byron']
+
+print (ancestors(ada_family, 'Dave'))
+#>>> []
