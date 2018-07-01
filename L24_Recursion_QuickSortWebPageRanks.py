@@ -46,7 +46,7 @@ def ordered_search(index, ranks, keyword):
 def quickSort(url_list, ranks):
     if len(url_list) == 0 or len(url_list) == 1:
         return url_list
-    elif sorted(url_list, ranks):
+    elif sorted(url_list, ranks): #if url_list is already sorted, return (termination mechanism)
         return url_list
     else:
         pivot = url_list[0]
@@ -57,7 +57,8 @@ def quickSort(url_list, ranks):
                 right.append(link)
             elif ranks[link] < ranks[pivot]:
                 left.append(link)
-            else:
+            else: #if ranks[link] == ranks[url_list[0]], compare ranks[link] with ranks[url_list[1]]
+                  #This is to avoid case like [3,2], 3 == pivot(3), left bucket; 2 < pivot, left : [3,2] infinite loop
                 if ranks[link] > ranks[url_list[1]]:
                     right.append(link)
                 else:

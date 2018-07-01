@@ -36,41 +36,23 @@ def ordered_search(index, ranks, keyword):
     if keyword not in index:
         return None
     url_list = index[keyword]
-    if len(url_list) == 0 or len(url_list) ==1:
-        return url_list
-    else:
-        result = quickSort(url_list, ranks)
-        return result[::-1]
+    result = quickSort(url_list, ranks)
+    return result[::-1]
         
         
 def quickSort(url_list, ranks):
     if len(url_list) == 0 or len(url_list) == 1:
         return url_list
-    elif sorted(url_list, ranks):
-        return url_list
     else:
         pivot = url_list[0]
         left = []
         right = []
-        for link in url_list:
-            if ranks[link] > ranks[pivot]:
+        for link in url_list[1:]: #Not compare pivot with itself
+            if ranks[link] >= ranks[pivot]:
                 right.append(link)
-            elif ranks[link] < ranks[pivot]:
-                left.append(link)
             else:
-                if ranks[link] > ranks[url_list[1]]:
-                    right.append(link)
-                else:
-                    left.append(link)
-        return quickSort(left, ranks) + quickSort(right, ranks)
-    
-
-def sorted(url_list, ranks):
-    for i in range(len(url_list)):
-        if ranks[url_list[i+1]] < ranks[url_list[i]]:
-            return False
-    return True
-    
+                left.append(link)
+        return quickSort(left, ranks) + [pivot] + quickSort(right, ranks) #Recurse until left and right contains single or zero element
 
 
 cache = {
