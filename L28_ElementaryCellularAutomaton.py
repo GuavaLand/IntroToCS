@@ -77,7 +77,7 @@ def cellular_automaton(pattern, num, gen):
     
 def execution_cycle(pattern, templ, gen):
     '''
-    Investigate every 3 char in pattern. 'x' if 3 char present in temp else '.' 
+    Investigate every 3 char in pattern. 'x' if 3 char present in templ else '.' 
     '''
     result = ''
     pattern_len = len(pattern)
@@ -116,28 +116,28 @@ def return_pattern_needed(num_list):
 
 
 
-print cellular_automaton('.x.x.x.x.', 17, 2)
+print(cellular_automaton('.x.x.x.x.', 17, 2))
 #>>> xxxxxxx..
-print cellular_automaton('.x.x.x.x.', 249, 3)
+print(cellular_automaton('.x.x.x.x.', 249, 3))
 #>>> .x..x.x.x
-print cellular_automaton('...x....', 125, 1)
+print(cellular_automaton('...x....', 125, 1))
 #>>> xx.xxxxx
-print cellular_automaton('...x....', 125, 2)
+print(cellular_automaton('...x....', 125, 2))
 #>>> .xxx....
-print cellular_automaton('...x....', 125, 3)
+print(cellular_automaton('...x....', 125, 3))
 #>>> .x.xxxxx
-print cellular_automaton('...x....', 125, 4)
+print(cellular_automaton('...x....', 125, 4))
 #>>> xxxx...x
-print cellular_automaton('...x....', 125, 5)
+print(cellular_automaton('...x....', 125, 5))
 #>>> ...xxx.x
-print cellular_automaton('...x....', 125, 6)
+print(cellular_automaton('...x....', 125, 6))
 #>>> xx.x.xxx
-print cellular_automaton('...x....', 125, 7)
+print(cellular_automaton('...x....', 125, 7))
 #>>> .xxxxx..
-print cellular_automaton('...x....', 125, 8)
+print(cellular_automaton('...x....', 125, 8))
 #>>> .x...xxx
-print cellular_automaton('...x....', 125, 9)
+print(cellular_automaton('...x....', 125, 9))
 #>>> xxxx.x.x
-print cellular_automaton('...x....', 125, 10)
+print(cellular_automaton('...x....', 125, 10))
 #>>> ...xxxxx
 
